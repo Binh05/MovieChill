@@ -5,6 +5,7 @@ import {
     NavigationMenuList,
     NavigationMenuItem,
     NavigationMenuTrigger,
+    navigationMenuTriggerStyle,
     NavigationMenuContent,
     NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
@@ -40,14 +41,8 @@ function Header() {
                 !isAtTop ? "lg:h-17 lg:bg-black" : "lg:h-22",
             )}
         >
-            <DropdownMenu>
-                <DropdownMenuTrigger>
-                    <ButtonX className={`${openSearch && "hidden"}`}></ButtonX>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                    <DropdownMenuItem>Chủ đề</DropdownMenuItem>
-                </DropdownMenuContent>
-            </DropdownMenu>
+            <ButtonX className={`hidden ${openSearch && "hidden"}`}></ButtonX>
+            <NavDesktop />
             <div className={`flex gap-4 ${openSearch && "w-full"}`}>
                 <div
                     className={`relative flex w-full items-center ${!openSearch && "hidden"}`}
@@ -69,6 +64,59 @@ function Header() {
             </div>
             {/* <Input type="text" placeholder="Tìm kiếm phim, diễn viên" /> */}
         </header>
+    );
+}
+
+function NavDesktop() {
+    return (
+        <NavigationMenu>
+            <NavigationMenuList>
+                <NavigationMenuItem>
+                    <NavigationMenuLink
+                        asChild
+                        className={navigationMenuTriggerStyle()}
+                    >
+                        <a href="#">Chủ đề</a>
+                    </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <NavigationMenuTrigger>Thể loại</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                        <ul>
+                            <ListItem title="anime" />
+                        </ul>
+                    </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <NavigationMenuLink
+                        asChild
+                        className={navigationMenuTriggerStyle()}
+                    >
+                        <a href="">Phim lẻ</a>
+                    </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <NavigationMenuTrigger>Quoc gia</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                        <ul>
+                            <ListItem title="Viet Nam" />
+                        </ul>
+                    </NavigationMenuContent>
+                </NavigationMenuItem>
+            </NavigationMenuList>
+        </NavigationMenu>
+    );
+}
+
+function ListItem({ title, ...props }: React.ComponentPropsWithoutRef<"li">) {
+    return (
+        <li {...props}>
+            <NavigationMenuLink asChild>
+                <a href="" className="leading-none">
+                    {title}
+                </a>
+            </NavigationMenuLink>
+        </li>
     );
 }
 

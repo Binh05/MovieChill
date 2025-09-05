@@ -3,9 +3,13 @@ import Content from "./Content";
 
 export default function TheLoai({ title }: { title: string }) {
     return (
-        <div>
-            <Header />
-            {/* <Content title={title} /> */}
+        <div className="space-y-60">
+            <div>
+                <Header />
+            </div>
+            <div>
+                <Content title={title} />
+            </div>
         </div>
     );
 }

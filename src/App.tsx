@@ -1,12 +1,12 @@
+import { Routes, Route } from "react-router-dom";
 import TheLoai from "./Pages/TheLoai";
 
 function App() {
     return (
-        <div>
-            <TheLoai title="anime" />
-            <div className="h-screen"></div>
-            <div className="h-screen"></div>
-        </div>
+        <Routes>
+            <Route path="/:page" element={<TheLoai title="anime" />}></Route>
+            <Route path="/" element={<TheLoai title="anime" />}></Route>
+        </Routes>
     );
 }
 

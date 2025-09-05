@@ -5,3 +5,4 @@ framework/lib:
 - tailwindcss
 - shadCN
 - clsx
+- react router (npm i react-router-dom@latest)
